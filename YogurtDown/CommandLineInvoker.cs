@@ -22,7 +22,7 @@ internal static class CommandLineInvoker
     private static readonly Option<bool> UseAria2c = new(["--use-aria2c", "-aria2"], "调用aria2c进行下载（你需要自行准备好二进制可执行文件）");
     private static readonly Option<string> Aria2cArgs = new(["--aria2c-args"], "调用aria2c的附加参数（默认参数包含\"-x16 -s16 -j16 -k 5M\", 使用时注意字符串转义）");
     private static readonly Option<bool> MultiThread = new(["--multi-thread", "-mt"], "使用多线程下载（默认开启）");
-    private static readonly Option<string> SelectPage = new(["--select-page", "-p"], "选择指定分p或分p范围: (-p 8 或 -p 1,2 或 -p 3-5 或 -p ALL 或 -p LAST 或 -p 3,5,LATEST)");
+    private static readonly Option<string> SelectPage = new(["--select-page", "-p"], "选择指定分P或分P范围: (-p 8 或 -p 1,2 或 -p 3-5 或 -p ALL 或 -p LAST 或 -p 3,5,LATEST)");
     private static readonly Option<bool> SimplyMux = new(["--simply-mux"], "简单混流，不添加描述、作者等信息");
     private static readonly Option<bool> AudioOnly = new(["--audio-only"], "仅下载音频");
     private static readonly Option<bool> VideoOnly = new(["--video-only"], "仅下载视频");
@@ -71,7 +71,7 @@ internal static class CommandLineInvoker
         $"<ownerName>: 上传者名称\r\n" + 
         $"<ownerMid>: 上传者mid\r\n" + 
         $"<publishDate>: 收藏夹/番剧/合集发布时间\r\n" + 
-        $"<videoDate>: 视频发布时间（分p视频发布时间与<publishDate>相同）\r\n" + 
+        $"<videoDate>: 视频发布时间（分P视频发布时间与<publishDate>相同）\r\n" + 
         $"<apiType>: API类型（TV/APP/INTL/WEB）\r\n\r\n" + 
         $"默认为: {Program.SinglePageDefaultSavePath}\r\n");
     private static readonly Option<string> MultiFilePattern = new(["--multi-file-pattern", "-M"], $"使用内置变量自定义多P存储文件名:\r\n\r\n默认为: {Program.MultiPageDefaultSavePath}\r\n");

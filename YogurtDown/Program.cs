@@ -151,7 +151,8 @@ partial class Program
         {
             Config.DEBUG_LOG = true;
         }
-
+        
+        Log(" ");
         Console.BackgroundColor = ConsoleColor.DarkBlue;
         Console.ForegroundColor = ConsoleColor.White;
         var ver = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version!;
@@ -241,7 +242,7 @@ partial class Program
 
         Log("获取aid...");
         aidOri = await GetAvIdAsync(input);
-        Log($"获取 aid 结束成功：{aidOri}");
+        Log($"获取 aid 成功：{aidOri}");
 
         if (string.IsNullOrEmpty(aidOri))
         {
@@ -377,7 +378,7 @@ partial class Program
             }
         }
 
-        Log("任务完成");
+        Log("全部搞定！");
     }
 
     private static async Task DownloadPageAsync(Page p, MyOption myOption, VInfo vInfo, List<Page> selectedPagesInfo, Dictionary<string, byte> encodingPriority, Dictionary<string, int> dfnPriority,

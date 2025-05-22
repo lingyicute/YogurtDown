@@ -29,7 +29,7 @@ public partial class NormalInfoFetcher : IFetcher
         // 互动视频 1:是 0:否
         var isSteinGate = data.GetProperty("rights").GetProperty("is_stein_gate").GetInt16();
 
-        // 分p信息
+        // 分P信息
         List<Page> pagesInfo = new();
         var pages = data.GetProperty("pages").EnumerateArray().ToList();
         foreach (var page in pages)
@@ -41,7 +41,7 @@ public partial class NormalInfoFetcher : IFetcher
                 page.GetProperty("part").ToString().Trim(),
                 page.GetProperty("duration").GetInt32(),
                 page.GetProperty("dimension").GetProperty("width").ToString() + "x" + page.GetProperty("dimension").GetProperty("height").ToString(),
-                pubTime, //分p视频没有发布时间
+                pubTime, //分P视频没有发布时间
                 "",
                 "",
                 ownerName,
@@ -81,7 +81,7 @@ public partial class NormalInfoFetcher : IFetcher
                             page.GetProperty("option").ToString().Trim(),
                             0,
                             "",
-                            pubTime, //分p视频没有发布时间
+                            pubTime, //分P视频没有发布时间
                             "",
                             "",
                             ownerName,

@@ -300,12 +300,12 @@ internal partial class Program
             if (!string.IsNullOrEmpty(vInfo.Index))
             {
                 selectedPages = [vInfo.Index];
-                Log("程序已自动选择你输入的集数, 如果要下载其他集数请自行指定分P（如可使用-p ALL代表全部）");
+                Log("YogurtDown 已自动选择你输入的集数, 如果要下载其他集数请自行指定分P（如可使用-p ALL代表全部）");
             }
             else if (!string.IsNullOrEmpty(GetQueryString("p", input)))
             {
                 selectedPages = [GetQueryString("p", input)];
-                Log("程序已自动选择你输入的集数, 如果要下载其他集数请自行指定分P（如可使用-p ALL代表全部）");
+                Log("YogurtDown 已自动选择你输入的集数, 如果要下载其他集数请自行指定分P（如可使用-p ALL代表全部）");
             }
         }
         else if (selectPage != "ALL")
