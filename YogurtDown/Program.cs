@@ -356,7 +356,7 @@ partial class Program
                 Log($"停顿{delay}秒...");
                 await Task.Delay(delay * 1000);
             }
-            Log($"开始解析P{p.index}: {p.aid}... ({pagesInfo.IndexOf(p) + 1} of {pagesInfo.Count})");
+            Log($"开始解析 P{p.index}: {p.aid}... ({pagesInfo.IndexOf(p) + 1} of {pagesInfo.Count})");
 
             if (myOption.SaveArchivesToFile)
             {
@@ -425,7 +425,7 @@ partial class Program
                     subtitleInfo = await SubUtil.GetSubtitlesAsync(p.aid, p.cid, p.epid, p.index, myOption.UseIntlApi);
                     if (myOption.SkipAi && subtitleInfo.Any())
                     {
-                        Log($"跳过下载AI字幕");
+                        Log($"跳过下载 AI 字幕");
                         subtitleInfo = subtitleInfo.Where(s => !s.lan.StartsWith("ai-")).ToList();
                     }
                     foreach (Subtitle s in subtitleInfo)
@@ -629,23 +629,23 @@ partial class Program
                     //杜比视界, 若ffmpeg版本小于5.0, 使用mp4box封装
                     if (selectedVideo.dfn == Config.qualitys["126"] && !myOption.UseMP4box && !CheckFFmpegDOVI())
                     {
-                        LogWarn($"检测到杜比视界清晰度且你的ffmpeg版本小于5.0,将使用mp4box混流...");
+                        LogWarn($"检测到杜比视界视频流，且你的 ffmpeg 版本小于5.0。出于稳妥考虑，YogurtDown 将使用 mp4box 混流...");
                         myOption.UseMP4box = true;
                     }
-                    Log($"开始下载P{p.index}视频...");
+                    Log($"开始下载 P{p.index} 视频...");
                     await DownloadTrackAsync(selectedVideo.baseUrl, videoPath, downloadConfig, video: true);
                 }
 
                 if (selectedAudio != null)
                 {
-                    Log($"开始下载P{p.index}音频...");
+                    Log($"开始下载 P{p.index} 音频...");
                     await DownloadTrackAsync(selectedAudio.baseUrl, audioPath, downloadConfig, video: false);
                 }
 
                 if (selectedBackgroundAudio != null)
                 {
                     var backgroundPath = $"{p.aid}/{p.aid}.{p.cid}.P{p.index}.back_ground.m4a";
-                    Log($"开始下载P{p.index}背景配音...");
+                    Log($"开始下载 P{p.index} 背景配音...");
                     await DownloadTrackAsync(selectedBackgroundAudio.baseUrl, backgroundPath, downloadConfig, video: false);
                     audioMaterial.Add(new AudioMaterial("背景音频", "", backgroundPath));
                 }
@@ -654,13 +654,13 @@ partial class Program
                 {
                     foreach (var role in parsedResult.RoleAudioList)
                     {
-                        Log($"开始下载P{p.index}配音[{role.title}]...");
+                        Log($"开始下载 P{p.index} 配音[{role.title}]...");
                         await DownloadTrackAsync(role.audio[aIndex].baseUrl, role.path, downloadConfig, video: false);
                         audioMaterial.Add(new AudioMaterial(role));
                     }
                 }
 
-                Log($"下载P{p.index}完毕");
+                Log($"下载 P{p.index} 完毕");
                 if (!parsedResult.VideoTracks.Any()) videoPath = "";
                 if (!parsedResult.AudioTracks.Any()) audioPath = "";
                 if (myOption.SkipMux) return;
@@ -706,7 +706,7 @@ partial class Program
                 {
                     int i = 0;
                     dfns.ForEach(key => LogColor($"{i++}.{Config.qualitys[key]}"));
-                    Log("请选择最想要的清晰度(输入序号): ", false);
+                    Log("请选择最想要的清晰度（输入序号）: ", false);
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     vIndex = Convert.ToInt32(Console.ReadLine());
                     if (vIndex > dfns.Count || vIndex < 0) vIndex = 0;
@@ -720,7 +720,7 @@ partial class Program
                     goto reParse;
                 }
 
-                Log($"共计{parsedResult.VideoTracks.Count}条流(共有{clips.Count}个分段).");
+                Log($"共计 {parsedResult.VideoTracks.Count} 条流（共有{clips.Count}个分段）");
                 int index = 0;
                 foreach (var v in parsedResult.VideoTracks)
                 {
@@ -747,10 +747,10 @@ partial class Program
                 {
                     var link = clips[i];
                     videoPath = $"{p.aid}/{p.aid}.P{p.index}.{p.cid}.{i.ToString(pad)}.mp4";
-                    Log($"开始下载P{p.index}视频, 片段({(i + 1).ToString(pad)}/{clips.Count})...");
+                    Log($"开始下载 P{p.index} 视频, 片段({(i + 1).ToString(pad)}/{clips.Count})...");
                     await DownloadTrackAsync(link, videoPath, downloadConfig, video: true);
                 }
-                Log($"下载P{p.index}完毕");
+                Log($"下载 P{p.index} 完毕");
                 Log("开始合并分段...");
                 var files = GetFiles(Path.GetDirectoryName(videoPath)!, ".mp4");
                 videoPath = $"{p.aid}/{p.aid}.P{p.index}.{p.cid}.mp4";
@@ -783,7 +783,7 @@ partial class Program
             }
             else
             {
-                LogError("解析此分P失败(建议--debug查看详细信息)");
+                LogError("解析此分P异常");
                 if (parsedResult.WebJsonString.Length < 100)
                 {
                     LogError(parsedResult.WebJsonString);

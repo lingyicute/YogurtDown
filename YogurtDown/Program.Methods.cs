@@ -159,7 +159,7 @@ internal partial class Program
                 {
                     var binPath = FindExecutable("mp4box") ?? FindExecutable("MP4box");
                     if (string.IsNullOrEmpty(binPath))
-                        throw new Exception("找不到可执行的mp4box文件");
+                        throw new Exception("找不到可执行的 mp4box 文件");
                     YogurtDownMuxer.MP4BOX = binPath;
                 }
             }
@@ -167,7 +167,7 @@ internal partial class Program
             {
                 var binPath = FindExecutable("ffmpeg");
                 if (string.IsNullOrEmpty(binPath))
-                    throw new Exception("找不到可执行的ffmpeg文件");
+                    throw new Exception("找不到可执行的 ffmpeg 文件");
                 YogurtDownMuxer.FFMPEG = binPath;
             }
         }
@@ -179,7 +179,7 @@ internal partial class Program
             {
                 var binPath = FindExecutable("aria2c");
                 if (string.IsNullOrEmpty(binPath))
-                    throw new Exception("找不到可执行的aria2c文件");
+                    throw new Exception("找不到可执行的 aria2c 文件");
                 YogurtDownAria2c.ARIA2C = binPath;
             }
 
@@ -300,12 +300,12 @@ internal partial class Program
             if (!string.IsNullOrEmpty(vInfo.Index))
             {
                 selectedPages = [vInfo.Index];
-                Log("程序已自动选择你输入的集数, 如果要下载其他集数请自行指定分P(如可使用-p ALL代表全部)");
+                Log("程序已自动选择你输入的集数, 如果要下载其他集数请自行指定分P（如可使用-p ALL代表全部）");
             }
             else if (!string.IsNullOrEmpty(GetQueryString("p", input)))
             {
                 selectedPages = [GetQueryString("p", input)];
-                Log("程序已自动选择你输入的集数, 如果要下载其他集数请自行指定分P(如可使用-p ALL代表全部)");
+                Log("程序已自动选择你输入的集数, 如果要下载其他集数请自行指定分P（如可使用-p ALL代表全部）");
             }
         }
         else if (selectPage != "ALL")
@@ -339,7 +339,7 @@ internal partial class Program
                     }
                 }
             }
-            catch { LogError("解析分P参数时失败了~"); selectedPages = null; };
+            catch { LogError("解析分P参数时出错"); selectedPages = null; };
         }
 
         return selectedPages;
@@ -361,12 +361,12 @@ internal partial class Program
                 var pcdnReg = PcdnRegex();
                 if (selectedVideo != null && pcdnReg.IsMatch(selectedVideo.baseUrl))
                 {
-                    LogWarn($"检测到视频流为PCDN, 尝试强制替换为{BACKUP_HOST}……");
+                    LogWarn($"检测到视频流为PCDN, 尝试强制替换为 {BACKUP_HOST}……");
                     selectedVideo.baseUrl = pcdnReg.Replace(selectedVideo.baseUrl, $"://{BACKUP_HOST}/");
                 }
                 if (selectedAudio != null && pcdnReg.IsMatch(selectedAudio.baseUrl))
                 {
-                    LogWarn($"检测到音频流为PCDN, 尝试强制替换为{BACKUP_HOST}……");
+                    LogWarn($"检测到音频流为PCDN, 尝试强制替换为 {BACKUP_HOST}……");
                     selectedAudio.baseUrl = pcdnReg.Replace(selectedAudio.baseUrl, $"://{BACKUP_HOST}/");
                 }
             }
@@ -374,12 +374,12 @@ internal partial class Program
             var akamReg = AkamRegex();
             if (selectedVideo != null && Config.AREA != "" && selectedVideo.baseUrl.Contains("akamaized.net"))
             {
-                LogWarn($"检测到视频流为外国源, 尝试强制替换为{BACKUP_HOST}……");
+                LogWarn($"检测到视频流为海外源, 尝试强制替换为 {BACKUP_HOST}……");
                 selectedVideo.baseUrl = akamReg.Replace(selectedVideo.baseUrl, $"://{BACKUP_HOST}/");
             }
             if (selectedAudio != null && Config.AREA != "" && selectedAudio.baseUrl.Contains("akamaized.net"))
             {
-                LogWarn($"检测到音频流为外国源, 尝试强制替换为{BACKUP_HOST}……");
+                LogWarn($"检测到音频流为海外源, 尝试强制替换为 {BACKUP_HOST}……");
                 selectedAudio.baseUrl = akamReg.Replace(selectedAudio.baseUrl, $"://{BACKUP_HOST}/");
             }
         }
@@ -387,12 +387,12 @@ internal partial class Program
         {
             if (selectedVideo != null)
             {
-                LogWarn($"尝试将视频流强制替换为{myOption.UposHost}……");
+                LogWarn($"尝试将视频流强制替换为 {myOption.UposHost}……");
                 selectedVideo.baseUrl = UposRegex().Replace(selectedVideo.baseUrl, $"://{myOption.UposHost}/");
             }
             if (selectedAudio != null)
             {
-                LogWarn($"尝试将音频流强制替换为{myOption.UposHost}……");
+                LogWarn($"尝试将音频流强制替换为 {myOption.UposHost}……");
                 selectedAudio.baseUrl = UposRegex().Replace(selectedAudio.baseUrl, $"://{myOption.UposHost}/");
             }
         }
@@ -407,14 +407,14 @@ internal partial class Program
     {
         if (parsedResult.BackgroundAudioTracks.Any() && parsedResult.RoleAudioList.Any())
         {
-            Log($"共计{parsedResult.BackgroundAudioTracks.Count}条背景音频流.");
+            Log($"共计 {parsedResult.BackgroundAudioTracks.Count} 条背景音频流.");
             int index = 0;
             foreach (var a in parsedResult.BackgroundAudioTracks)
             {
                 int pDur = pageDur == 0 ? a.dur : pageDur;
                 LogColor($"{index++}. [{a.codecs}] [{a.bandwith} kbps] [~{FormatFileSize(pDur * a.bandwith * 1024 / 8)}]", false);
             }
-            Log($"共计{parsedResult.RoleAudioList.Count}条配音, 每条包含{parsedResult.RoleAudioList[0].audio.Count}条配音流.");
+            Log($"共计 {parsedResult.RoleAudioList.Count} 条配音, 每条包含 {parsedResult.RoleAudioList[0].audio.Count} 条配音流.");
             index = 0;
             foreach (var a in parsedResult.RoleAudioList[0].audio)
             {
@@ -425,7 +425,7 @@ internal partial class Program
         //展示所有的音视频流信息
         if (parsedResult.VideoTracks.Any())
         {
-            Log($"共计{parsedResult.VideoTracks.Count}条视频流.");
+            Log($"共计 {parsedResult.VideoTracks.Count} 条视频流.");
             int index = 0;
             foreach (var v in parsedResult.VideoTracks)
             {
@@ -437,7 +437,7 @@ internal partial class Program
         }
         if (parsedResult.AudioTracks.Any())
         {
-            Log($"共计{parsedResult.AudioTracks.Count}条音频流.");
+            Log($"共计 {parsedResult.AudioTracks.Count} 条音频流.");
             int index = 0;
             foreach (var a in parsedResult.AudioTracks)
             {
@@ -473,7 +473,7 @@ internal partial class Program
     {
         if (parsedResult.VideoTracks.Any())
         {
-            Log("请选择一条视频流(输入序号): ", false);
+            Log("请选择一条视频流（输入序号）: ", false);
             Console.ForegroundColor = ConsoleColor.Cyan;
             vIndex = Convert.ToInt32(Console.ReadLine());
             if (vIndex > parsedResult.VideoTracks.Count || vIndex < 0) vIndex = 0;
@@ -481,7 +481,7 @@ internal partial class Program
         }
         if (parsedResult.AudioTracks.Any())
         {
-            Log("请选择一条音频流(输入序号): ", false);
+            Log("请选择一条音频流（输入序号）: ", false);
             Console.ForegroundColor = ConsoleColor.Cyan;
             aIndex = Convert.ToInt32(Console.ReadLine());
             if (aIndex > parsedResult.AudioTracks.Count || aIndex < 0) aIndex = 0;

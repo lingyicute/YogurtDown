@@ -65,7 +65,7 @@ public static partial class Parser
         //以下情况从网页源代码尝试解析
         if (webJson.Contains("\"大会员专享限制\""))
         {
-            Log("此视频需要大会员，你大概率需要登录一个有大会员的账号才可以下载，尝试从网页源码解析");
+            Log("此视频需要大会员，你大概率需要鉴权才可以正常下载。YogurtDown 正在尝试从网页源码解析，成不成就看运气啦！");
             string webUrl = "https://www.bilibili.com/bangumi/play/ep" + epId;
             string webSource = await GetWebSourceAsync(webUrl);
             webJson = PlayerJsonRegex().Match(webSource).Groups[1].Value;
