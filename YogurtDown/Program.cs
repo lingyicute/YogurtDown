@@ -73,11 +73,11 @@ partial class Program
 
         var rootCommand = CommandLineInvoker.GetRootCommand(RunApp);
         Command loginCommand = new(
-            "login",
+            "auth",
             "使用 Web 接口获取一个令牌");
         rootCommand.AddCommand(loginCommand);
         Command loginTVCommand = new(
-            "logintv",
+            "authtv",
             "使用 TV 接口获取一个令牌");
         rootCommand.AddCommand(loginTVCommand);
         var serverUrlOpt = new Option<string>(

@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net9.0</TargetFramework>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.8.2</Version>
+    <Version>1.8.6</Version>
     <Description>YogurtDown 梨优析 / 最好用的 BiliBili 视频电影下载器</Description>
     <PackageProjectUrl>https://github.com/lingyicute/YogurtDown</PackageProjectUrl>
     <StartupObject></StartupObject>
