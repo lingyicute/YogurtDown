@@ -9,7 +9,7 @@ public static class DanmakuUtil
     private const int MONITOR_WIDTH = 1920;         //渲染字幕时的渲染范围的高度
     private const int MONITOR_HEIGHT = 1080;        //渲染字幕时的渲染范围的高度
     private const int FONT_SIZE = 40;               //字体大小
-    private const double MOVE_SPEND_TIME = 8.00;    //单条条滚动弹幕存在时间（控制速度）
+    private const double MOVE_SPEND_TIME = 8.00;    //单条条滚动弹幕存在时间 (控制速度) 
     private const double TOP_SPEND_TIME = 4.00;     //单条顶部或底部弹幕存在时间
     private const int PROTECT_LENGTH = 50;          //滚动弹幕屏占百分比
     public static readonly DanmakuComparer comparer = new();
@@ -212,7 +212,7 @@ public static class DanmakuUtil
         public string StartTime { get; set; } = "";
         // 出现时间
         public double Second { get; set; } = 0.00;
-        // 出现时间（秒为单位）
+        // 出现时间 (秒为单位) 
         public string EndTime { get; set; } = "";
         // 消失时间
         public int DanmakuMode { get; set; } = POS_MOVE;

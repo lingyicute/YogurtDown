@@ -11,7 +11,7 @@ internal static class CommandLineInvoker
     private static readonly Argument<string> Url = new("url", description: "视频地址 或 av|bv|BV|ep|ss");
     private static readonly Option<bool> UseTvApi = new(["--use-tv-api", "-tv"], "使用 TV 端解析模式");
     private static readonly Option<bool> UseAppApi = new(["--use-app-api", "-app"], "使用 APP 端解析模式");
-    private static readonly Option<bool> UseIntlApi = new(["--use-intl-api", "-intl"], "使用国际版（东南亚视频）解析模式");
+    private static readonly Option<bool> UseIntlApi = new(["--use-intl-api", "-intl"], "使用国际版 (东南亚视频) 解析模式");
     private static readonly Option<bool> UseMP4box = new(["--use-mp4box"], "使用 MP4Box 执行混流");
     private static readonly Option<string> EncodingPriority = new(["--encoding-priority", "-e"], "视频编码的选择优先级, 用逗号分割 例: \"hevc,av1,avc\"");
     private static readonly Option<string> DfnPriority = new(["--dfn-priority", "-q"], "画质优先级, 用逗号分隔 例: \"8K 超高清, 1080P 高码率, HDR 真彩, 杜比视界\"");
@@ -19,9 +19,9 @@ internal static class CommandLineInvoker
     private static readonly Option<bool> HideStreams = new(["--hide-streams", "-hs"], "隐藏可用音视频流列表");
     private static readonly Option<bool> Interactive = new(["--interactive", "-ia"], "交互式选择清晰度");
     private static readonly Option<bool> ShowAll = new(["--show-all"], "展示所有分P标题");
-    private static readonly Option<bool> UseAria2c = new(["--use-aria2c", "-aria2"], "调用aria2c进行下载（你需要自行准备好二进制可执行文件）");
-    private static readonly Option<string> Aria2cArgs = new(["--aria2c-args"], "调用aria2c的附加参数（默认参数包含\"-x16 -s16 -j16 -k 5M\", 使用时注意字符串转义）");
-    private static readonly Option<bool> MultiThread = new(["--multi-thread", "-mt"], "使用多线程下载（默认开启）");
+    private static readonly Option<bool> UseAria2c = new(["--use-aria2c", "-aria2"], "调用aria2c进行下载 (你需要自行准备好二进制可执行文件) ");
+    private static readonly Option<string> Aria2cArgs = new(["--aria2c-args"], "调用aria2c的附加参数 (默认参数包含\"-x16 -s16 -j16 -k 5M\", 使用时注意字符串转义) ");
+    private static readonly Option<bool> MultiThread = new(["--multi-thread", "-mt"], "使用多线程下载 (默认开启) ");
     private static readonly Option<string> SelectPage = new(["--select-page", "-p"], "选择指定分P或分P范围: (-p 8 或 -p 1,2 或 -p 3-5 或 -p ALL 或 -p LAST 或 -p 3,5,LATEST)");
     private static readonly Option<bool> SimplyMux = new(["--simply-mux"], "简单混流，不添加描述、作者等信息");
     private static readonly Option<bool> AudioOnly = new(["--audio-only"], "仅下载音频");
@@ -33,14 +33,14 @@ internal static class CommandLineInvoker
     private static readonly Option<bool> SkipMux = new(["--skip-mux"], "跳过混流步骤");
     private static readonly Option<bool> SkipSubtitle = new(["--skip-subtitle"], "跳过字幕下载");
     private static readonly Option<bool> SkipCover = new(["--skip-cover"], "跳过封面下载");
-    private static readonly Option<bool> ForceHttp = new(["--force-http"], "下载音视频时强制使用 HTTP 协议替换 HTTPS（默认开启）");
+    private static readonly Option<bool> ForceHttp = new(["--force-http"], "下载音视频时强制使用 HTTP 协议替换 HTTPS (默认开启) ");
     private static readonly Option<bool> DownloadDanmaku = new(["--download-danmaku", "-dd"], "下载弹幕");
     private static readonly Option<string> DownloadDanmakuFormats = new(["--download-danmaku-formats", "-ddf"], $"指定需下载的弹幕格式, 用逗号分隔, 可选 {string.Join('/', YogurtDownDanmakuFormatInfo.AllFormatNames)}, 默认: \"{string.Join(',', YogurtDownDanmakuFormatInfo.AllFormatNames)}\"");
-    private static readonly Option<bool> SkipAi = new(["--skip-ai"], description: "跳过 AI 字幕下载（默认开启）");
-    private static readonly Option<bool> VideoAscending = new(["--video-ascending"], "视频升序排列（最小体积优先）");
-    private static readonly Option<bool> AudioAscending = new(["--audio-ascending"], "音频升序排列（最小体积优先）");
+    private static readonly Option<bool> SkipAi = new(["--skip-ai"], description: "跳过 AI 字幕下载 (默认开启) ");
+    private static readonly Option<bool> VideoAscending = new(["--video-ascending"], "视频升序排列 (最小体积优先) ");
+    private static readonly Option<bool> AudioAscending = new(["--audio-ascending"], "音频升序排列 (最小体积优先) ");
     private static readonly Option<bool> AllowPcdn = new(["--allow-pcdn"], "不替换 PCDN 域名, 仅在正常情况与--upos-host均无法下载时使用");
-    private static readonly Option<string> Language = new(["--language"], "设置混流的音频语言（代码）, 如chi, jpn等");
+    private static readonly Option<string> Language = new(["--language"], "设置混流的音频语言 (代码) , 如chi, jpn等");
     private static readonly Option<string> UserAgent = new(["--user-agent", "-ua"], "指定 user-agent, 若未指定则使用随机 user-agent");
     private static readonly Option<string> Cookie = new(["--cookie", "-c"], "引入字符串 cookies");
     private static readonly Option<string> AccessToken = new(["--access-token", "-token"], "引入 access_token");
@@ -49,14 +49,14 @@ internal static class CommandLineInvoker
     private static readonly Option<string> Mp4boxPath = new(["--mp4box-path"], "设置 mp4box 可执行文件路径");
     private static readonly Option<string> Aria2cPath = new(["--aria2c-path"], "设置 aria2c 可执行文件路径");
     private static readonly Option<string> UposHost = new(["--upos-host"], "自定义upos服务器");
-    private static readonly Option<bool> ForceReplaceHost = new(["--force-replace-host"], "强制替换下载服务器host（默认开启）");
+    private static readonly Option<bool> ForceReplaceHost = new(["--force-replace-host"], "强制替换下载服务器host (默认开启) ");
     private static readonly Option<bool> SaveArchivesToFile = new(["--save-archives-to-file"], "将下载过的视频记录到本地文件中, 用于后续跳过下载同个视频");
     private static readonly Option<string> DelayPerPage = new(["--delay-per-page"], "设置下载合集分P之间的下载间隔时间(单位: 秒, 默认无间隔)");
     private static readonly Option<string> FilePattern = new(["--file-pattern", "-F"], 
         $"使用以下内置变量自定义分P存储文件名:\r\n\r\n" + 
         $"<videoTitle>: 视频主标题\r\n" + 
         $"<pageNumber>: 视频分P序号\r\n" + 
-        $"<pageNumberWithZero>: 视频分P序号（前缀补零）\r\n" + 
+        $"<pageNumberWithZero>: 视频分P序号 (前缀补零) \r\n" + 
         $"<pageTitle>: 视频分P标题\r\n" + 
         $"<bvid>: 视频BV号\r\n" + 
         $"<aid>: 视频aid\r\n" + 
@@ -71,22 +71,22 @@ internal static class CommandLineInvoker
         $"<ownerName>: 上传者名称\r\n" + 
         $"<ownerMid>: 上传者mid\r\n" + 
         $"<publishDate>: 收藏夹/番剧/合集发布时间\r\n" + 
-        $"<videoDate>: 视频发布时间（分P视频发布时间与<publishDate>相同）\r\n" + 
-        $"<apiType>: API类型（TV/APP/INTL/WEB）\r\n\r\n" + 
+        $"<videoDate>: 视频发布时间 (分P视频发布时间与<publishDate>相同) \r\n" + 
+        $"<apiType>: API类型 (TV/APP/INTL/WEB) \r\n\r\n" + 
         $"默认为: {Program.SinglePageDefaultSavePath}\r\n");
     private static readonly Option<string> MultiFilePattern = new(["--multi-file-pattern", "-M"], $"使用内置变量自定义多P存储文件名:\r\n\r\n默认为: {Program.MultiPageDefaultSavePath}\r\n");
     private static readonly Option<string> Host = new(["--host"], "指定 BiliPlus host");
-    private static readonly Option<string> EpHost = new(["--ep-host"], "指定 BiliPlus EP host（用于代理 api.bilibili.com/pgc/view/web/season）");
-    private static readonly Option<string> TvHost = new(["--tv-host"], "自定义 TV 端接口请求 Host（用于代理 api.snm0516.aisee.tv）");
+    private static readonly Option<string> EpHost = new(["--ep-host"], "指定 BiliPlus EP host (用于代理 api.bilibili.com/pgc/view/web/season) ");
+    private static readonly Option<string> TvHost = new(["--tv-host"], "自定义 TV 端接口请求 Host (用于代理 api.snm0516.aisee.tv) ");
     private static readonly Option<string> Area = new(["--area"], "(hk|tw|th) 使用 BiliPlus 时必选, 指定 BiliPlus area");
-    private static readonly Option<string> ConfigFile = new(["--config-file"], "读取指定的 YogurtDown 本地配置文件（默认为: YogurtDown.config）");
+    private static readonly Option<string> ConfigFile = new(["--config-file"], "读取指定的 YogurtDown 本地配置文件 (默认为: YogurtDown.config) ");
     private static readonly Option<string> Aria2cProxy = new(["--aria2c-proxy"], "调用 aria2c 进行下载时的代理地址配置") { IsHidden = true };
     private static readonly Option<bool> OnlyHevc = new(["--only-hevc", "-hevc"], "只下载 HEVC 编码") { IsHidden = true };
     private static readonly Option<bool> OnlyAvc = new(["--only-avc", "-avc"], "只下载 AVC 编码") { IsHidden = true };
     private static readonly Option<bool> OnlyAv1 = new(["--only-av1", "-av1"], "只下载 AV1 编码") { IsHidden = true };
     private static readonly Option<bool> AddDfnSubfix = new(["--add-dfn-subfix"], "为文件加入清晰度后缀, 如 XXX[1080P 高码率]") { IsHidden = true };
     private static readonly Option<bool> NoPaddingPageNum = new(["--no-padding-page-num"], "不在分P序号上补零") { IsHidden = true };
-    private static readonly Option<bool> BandwithAscending = new(["--bandwith-ascending"], "按比特率升序排列（最小体积优先）") { IsHidden = true };
+    private static readonly Option<bool> BandwithAscending = new(["--bandwith-ascending"], "按比特率升序排列 (最小体积优先) ") { IsHidden = true };
 
 
     class MyOptionBinder : BinderBase<MyOption>

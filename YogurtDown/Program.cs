@@ -707,7 +707,7 @@ partial class Program
                 {
                     int i = 0;
                     dfns.ForEach(key => LogColor($"{i++}.{Config.qualitys[key]}"));
-                    Log("请选择最想要的清晰度（输入序号）: ", false);
+                    Log("请选择最想要的清晰度 (输入序号) : ", false);
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     vIndex = Convert.ToInt32(Console.ReadLine());
                     if (vIndex > dfns.Count || vIndex < 0) vIndex = 0;
@@ -721,7 +721,7 @@ partial class Program
                     goto reParse;
                 }
 
-                Log($"共计 {parsedResult.VideoTracks.Count} 条流（共有{clips.Count}个分段）");
+                Log($"共计 {parsedResult.VideoTracks.Count} 条流 (共有{clips.Count}个分段) ");
                 int index = 0;
                 foreach (var v in parsedResult.VideoTracks)
                 {
