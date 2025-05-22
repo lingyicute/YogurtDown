@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Version>1.6.3</Version>
+    <Description>YogurtDown 梨优析 / 最好用的 BiliBili 视频电影下载器</Description>
+    <PackageProjectUrl>https://github.com/lingyicute/YogurtDown</PackageProjectUrl>
+    <StartupObject></StartupObject>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>YogurtDown</ToolCommandName>
+    <PackageOutputPath>./nupkg</PackageOutputPath>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="QRCoder" Version="1.6.0" />
+    <PackageReference Include="SharpZipLib" Version="1.4.2" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\YogurtDown.Core\YogurtDown.Core.csproj" />
+  </ItemGroup>
+
+</Project>
