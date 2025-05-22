@@ -31,16 +31,17 @@ internal static class YogurtDownLoginUtil
             //Log(url);
             bool flag = false;
             Log("生成二维码...");
+            Log("  ");
             QRCodeGenerator qrGenerator = new();
             QRCodeData qrCodeData = qrGenerator.CreateQrCode(url, QRCodeGenerator.ECCLevel.Q);
             PngByteQRCode pngByteCode = new(qrCodeData);
             await File.WriteAllBytesAsync("qrcode.png", pngByteCode.GetGraphic(7));
             var consoleQRCode = new ConsoleQRCode(qrCodeData);
             consoleQRCode.GetGraphic();
-            Log(" - - - - - - - - - - - - - - - - - - - - - - -");
+            Log("  ");
             Log("生成二维码成功！请把刚刚生成的 qrcode.png 发给梨，让她完成鉴权相关的技术处理。");
-            Log(" - - - - - - - - - - - - - - - - - - - - - - -");
-            Log("或者，如果暂时不想麻烦梨，你也可以扫描屏幕上的二维码用自己的账号登录 YogurtDown。此时 YogurtDown 将只能下载你的账号有权播放的内容 / 清晰度。");
+            Log("  ");
+            Log("或者，如果暂时不想麻烦梨，你也可以扫描屏幕上的二维码用自己的账号登录 YogurtDown。但需要注意的是，此时 YogurtDown 将只能下载你的账号有权播放的内容 / 清晰度。");
 
             while (true)
             {
@@ -49,7 +50,7 @@ internal static class YogurtDownLoginUtil
                 int code = JsonDocument.Parse(w).RootElement.GetProperty("data").GetProperty("code").GetInt32();
                 if (code == 86038)
                 {
-                    Log(" - - - - - - - - - - - - - - - - - - - - - - -");
+                    Log("  ");
                     LogColor("二维码已过期, 请重新执行鉴权流程。");
                     break;
                 }
@@ -67,10 +68,10 @@ internal static class YogurtDownLoginUtil
                 else
                 {
                     string cc = JsonDocument.Parse(w).RootElement.GetProperty("data").GetProperty("url").ToString();
-                    Log(" - - - - - - - - - - - - - - - - - - - - - - -");
+                    Log("  ");
                     Log("鉴权成功！本次获得的令牌如下：");
                     Log("SESSDATA=" + GetQueryString("SESSDATA", cc));
-                    Log(" - - - - - - - - - - - - - - - - - - - - - - -");
+                    Log("  ");
                     await File.WriteAllTextAsync(Path.Combine(Program.APP_DIR, "YogurtDown.data"), cc[(cc.IndexOf('?') + 1)..].Replace("&", ";").Replace(",", "%2C"));
                     File.Delete("qrcode.png");
                     break;
@@ -99,9 +100,9 @@ internal static class YogurtDownLoginUtil
             await File.WriteAllBytesAsync("qrcode.png", pngByteCode.GetGraphic(7));
             var consoleQRCode = new ConsoleQRCode(qrCodeData);
             consoleQRCode.GetGraphic();
-            Log(" - - - - - - - - - - - - - - - - - - - - - - -");
+            Log("  ");
             Log("生成二维码成功！请把刚刚生成的 qrcode.png 发给梨，让她完成鉴权相关的技术处理。");
-            Log(" - - - - - - - - - - - - - - - - - - - - - - -");
+            Log("  ");
             Log("或者，如果暂时不想麻烦梨，你也可以扫描屏幕上的二维码用自己的账号登录 YogurtDown。此时 YogurtDown 将只能下载你的账号有权播放的内容 / 清晰度。");
             parms.Set("auth_code", authCode);
             parms.Set("ts", GetTimeStamp(true));
@@ -115,7 +116,7 @@ internal static class YogurtDownLoginUtil
                 string code = JsonDocument.Parse(web).RootElement.GetProperty("code").ToString();
                 if (code == "86038")
                 {
-                    Log(" - - - - - - - - - - - - - - - - - - - - - - -");
+                    Log("  ");
                     LogColor("二维码已过期, 请重新执行鉴权流程。");
                     break;
                 }
@@ -126,9 +127,9 @@ internal static class YogurtDownLoginUtil
                 else
                 {
                     string cc = JsonDocument.Parse(web).RootElement.GetProperty("data").GetProperty("access_token").ToString();
-                    Log(" - - - - - - - - - - - - - - - - - - - - - - -");
+                    Log("  ");
                     Log("鉴权成功: AccessToken=" + cc);
-                    Log(" - - - - - - - - - - - - - - - - - - - - - - -");
+                    Log("  ");
                     await File.WriteAllTextAsync(Path.Combine(Program.APP_DIR, "YogurtDownTV.data"), "access_token=" + cc);
                     File.Delete("qrcode.png");
                     break;
