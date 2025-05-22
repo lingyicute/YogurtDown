@@ -152,7 +152,7 @@ partial class Program
             Config.DEBUG_LOG = true;
         }
         
-        Log(" ");
+        Console.WriteLine();
         Console.BackgroundColor = ConsoleColor.DarkBlue;
         Console.ForegroundColor = ConsoleColor.White;
         var ver = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version!;

@@ -23,6 +23,7 @@ internal static class YogurtDownLoginUtil
     {
         try
         {
+            Log("  ");
             Log("请求鉴权...");
             string loginUrl = "https://passport.bilibili.com/x/passport-login/web/qrcode/generate?source=main-fe-header";
             string url = JsonDocument.Parse(await HTTPUtil.GetWebSourceAsync(loginUrl)).RootElement.GetProperty("data").GetProperty("url").ToString();
@@ -30,6 +31,7 @@ internal static class YogurtDownLoginUtil
             //Log(oauthKey);
             //Log(url);
             bool flag = false;
+            Log("  ");
             Log("生成二维码...");
             Log("  ");
             QRCodeGenerator qrGenerator = new();
