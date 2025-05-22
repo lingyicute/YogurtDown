@@ -69,7 +69,7 @@ internal static class YogurtDownLoginUtil
                     string cc = JsonDocument.Parse(w).RootElement.GetProperty("data").GetProperty("url").ToString();
                     Log(" - - - - - - - - - - - - - - - - - - - - - - -");
                     Log("鉴权成功！本次获得的令牌如下：");
-                    Log("SESSDATA=" + "GetQueryString("SESSDATA", cc)");
+                    Log("SESSDATA=" + GetQueryString("SESSDATA", cc));
                     Log(" - - - - - - - - - - - - - - - - - - - - - - -");
                     await File.WriteAllTextAsync(Path.Combine(Program.APP_DIR, "YogurtDown.data"), cc[(cc.IndexOf('?') + 1)..].Replace("&", ";").Replace(",", "%2C"));
                     File.Delete("qrcode.png");
