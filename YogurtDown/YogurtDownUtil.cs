@@ -196,9 +196,21 @@ static partial class YogurtDownUtil
     public static string FormatTime(int time, bool absolute = false)
     {
         TimeSpan ts = TimeSpan.FromSeconds(time);
-        return !absolute
-            ? (ts.Hours == 0 ? ts.ToString(@"mm\mss\s") : ts.ToString(@"hh\hmm\mss\s"))
-            : ts.ToString(@"hh\:mm\:ss");
+        if (absolute)
+            {
+            return ts.ToString(@"hh\:mm\:ss");
+        }
+        else
+        {
+            if (ts.Hours > 0)
+            {
+               return $"时长：{ts.Hours}小时{ts.Minutes:D2}分{ts.Seconds:D2}秒";
+            }
+            else
+            {
+                return $"时长：{ts.Minutes}分{ts.Seconds:D2}秒";
+            }
+        }
     }
 
     /// <summary>
