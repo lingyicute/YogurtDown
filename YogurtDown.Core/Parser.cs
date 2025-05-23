@@ -262,7 +262,11 @@ public static partial class Parser
                     if (!tvApi && !appApi)
                     {
                         v.res = node.GetProperty("width").ToString() + "x" + node.GetProperty("height").ToString();
-                        v.fps = Math.Round(node.GetProperty("frame_rate").GetDouble()).ToString();
+                        v.fps = Math.Round(
+                            node.GetProperty("frame_rate").ValueKind == JsonValueKind.String 
+                            ? Convert.ToDouble(node.GetProperty("frame_rate").GetString()) 
+                            : node.GetProperty("frame_rate").GetDouble()
+                        ).ToString();
                     }
                     if (!parsedResult.VideoTracks.Contains(v)) parsedResult.VideoTracks.Add(v);
                 }
