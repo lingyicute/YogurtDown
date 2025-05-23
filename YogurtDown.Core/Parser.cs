@@ -262,13 +262,12 @@ public static partial class Parser
                     if (!tvApi && !appApi)
                     {
                         v.res = node.GetProperty("width").ToString() + "x" + node.GetProperty("height").ToString();
-                        v.fps = node.GetProperty("frame_rate").ToString();
+                        v.fps = Math.Round(node.GetProperty("frame_rate").GetDouble()).ToString();
                     }
                     if (!parsedResult.VideoTracks.Contains(v)) parsedResult.VideoTracks.Add(v);
                 }
             }
 
-            //此处处理免二压视频，需要单独再请求一次
             if (!reParse && !appApi)
             {
                 reParse = true;

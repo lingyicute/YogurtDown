@@ -431,7 +431,7 @@ internal partial class Program
             {
                 int pDur = pageDur == 0 ? v.dur : pageDur;
                 var size = v.size > 0 ? v.size : pDur * v.bandwith * 1024 / 8;
-                LogColor($"{index++}. [{v.dfn}] [{v.res}] [{v.codecs}] [{v.fps}] [码率: {v.bandwith} kbps] [{FormatFileSize(size)}]".Replace("[] ", ""), false);
+                LogColor($"{index++}. [{v.dfn}] [{v.res}] [{v.codecs}] [{v.fps} fps] [码率: {v.bandwith} kbps] [{FormatFileSize(size)}]".Replace("[] ", ""), false);
                 if (onlyShowInfo) Console.WriteLine(v.baseUrl);
             }
         }
@@ -454,7 +454,7 @@ internal partial class Program
         {
             int pDur = pageDur == 0 ? selectedVideo.dur : pageDur;
             var size = selectedVideo.size > 0 ? selectedVideo.size : pDur * selectedVideo.bandwith * 1024 / 8;
-            LogColor($"[视频] [{selectedVideo.dfn}] [{selectedVideo.res}] [{selectedVideo.codecs}] [{selectedVideo.fps}] [码率: {selectedVideo.bandwith} kbps] [{FormatFileSize(size)}]".Replace("[] ", ""), false);
+            LogColor($"[视频] [{selectedVideo.dfn}] [{selectedVideo.res}] [{selectedVideo.codecs}] [{selectedVideo.fps} fps] [码率: {selectedVideo.bandwith} kbps] [{FormatFileSize(size)}]".Replace("[] ", ""), false);
         }
         if (selectedAudio != null)
         {

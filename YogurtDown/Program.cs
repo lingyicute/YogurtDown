@@ -245,7 +245,7 @@ partial class Program
             }
         }
 
-        Log("获取aid...");
+        Log("获取 aid...");
         aidOri = await GetAvIdAsync(input);
         Log($"获取 aid 成功：{aidOri}");
 
@@ -288,7 +288,7 @@ partial class Program
         LogColor("视频标题: " + title);
         if (pubTime != 0)
         {
-            Log("发布时间: " + FormatTimeStamp(pubTime, "yyyy-MM-dd HH:mm:ss zzz"));
+            Log("发布时间: " + FormatTimeStamp(pubTime, "yyyy-MM-dd HH:mm:ss"));
         }
         var bvid = vInfo.PagesInfo.FirstOrDefault()?.bvid;
         if (!string.IsNullOrEmpty(bvid) && !myOption.UseIntlApi)
@@ -303,7 +303,7 @@ partial class Program
 
         if (vInfo.IsSteinGate && myOption.UseTvApi)
         {
-            Log("视频为互动视频，tv 接口暂不支持下载，已自动转为默认下载方式。");
+            Log("视频为互动视频，TV 接口暂不支持下载，已自动转为默认下载方式。");
             myOption.UseTvApi = false;
         }
         string apiType = myOption.UseTvApi ? "TV" : (myOption.UseAppApi ? "APP" : (myOption.UseIntlApi ? "INTL" : "WEB"));
@@ -730,7 +730,7 @@ partial class Program
                 int index = 0;
                 foreach (var v in parsedResult.VideoTracks)
                 {
-                    LogColor($"{index++}. [{v.dfn}] [{v.res}] [{v.codecs}] [{v.fps}] [码率: {v.size / 1024 / v.dur * 8:00} kbps] [{FormatFileSize(v.size)}]".Replace("[] ", ""), false);
+                    LogColor($"{index++}. [{v.dfn}] [{v.res}] [{v.codecs}] [{v.fps} fps] [码率: {v.size / 1024 / v.dur * 8:00} kbps] [{FormatFileSize(v.size)}]".Replace("[] ", ""), false);
                     if (myOption.OnlyShowInfo)
                     {
                         clips.ForEach(Console.WriteLine);
