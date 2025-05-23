@@ -412,14 +412,14 @@ internal partial class Program
             foreach (var a in parsedResult.BackgroundAudioTracks)
             {
                 int pDur = pageDur == 0 ? a.dur : pageDur;
-                LogColor($"{index++}. [{a.codecs}] [{a.bandwith} kbps] [{FormatFileSize(pDur * a.bandwith * 1024 / 8)}]", false);
+                LogColor($"{index++}. [{a.codecs}] [码率: {a.bandwith} kbps] [{FormatFileSize(pDur * a.bandwith * 1024 / 8)}]", false);
             }
             Log($"共计 {parsedResult.RoleAudioList.Count} 条配音, 每条包含 {parsedResult.RoleAudioList[0].audio.Count} 条配音流.");
             index = 0;
             foreach (var a in parsedResult.RoleAudioList[0].audio)
             {
                 int pDur = pageDur == 0 ? a.dur : pageDur;
-                LogColor($"{index++}. [{a.codecs}] [{a.bandwith} kbps] [{FormatFileSize(pDur * a.bandwith * 1024 / 8)}]", false);
+                LogColor($"{index++}. [{a.codecs}] [码率: {a.bandwith} kbps] [{FormatFileSize(pDur * a.bandwith * 1024 / 8)}]", false);
             }
         }
         //展示所有的音视频流信息
@@ -431,7 +431,7 @@ internal partial class Program
             {
                 int pDur = pageDur == 0 ? v.dur : pageDur;
                 var size = v.size > 0 ? v.size : pDur * v.bandwith * 1024 / 8;
-                LogColor($"{index++}. [{v.dfn}] [{v.res}] [{v.codecs}] [{v.fps}] [{v.bandwith} kbps] [{FormatFileSize(size)}]".Replace("[] ", ""), false);
+                LogColor($"{index++}. [{v.dfn}] [{v.res}] [{v.codecs}] [{v.fps}] [码率: {v.bandwith} kbps] [{FormatFileSize(size)}]".Replace("[] ", ""), false);
                 if (onlyShowInfo) Console.WriteLine(v.baseUrl);
             }
         }
@@ -442,7 +442,7 @@ internal partial class Program
             foreach (var a in parsedResult.AudioTracks)
             {
                 int pDur = pageDur == 0 ? a.dur : pageDur;
-                LogColor($"{index++}. [{a.codecs}] [{a.bandwith} kbps] [{FormatFileSize(pDur * a.bandwith * 1024 / 8)}]", false);
+                LogColor($"{index++}. [{a.codecs}] [码率: {a.bandwith} kbps] [{FormatFileSize(pDur * a.bandwith * 1024 / 8)}]", false);
                 if (onlyShowInfo) Console.WriteLine(a.baseUrl);
             }
         }
@@ -454,12 +454,12 @@ internal partial class Program
         {
             int pDur = pageDur == 0 ? selectedVideo.dur : pageDur;
             var size = selectedVideo.size > 0 ? selectedVideo.size : pDur * selectedVideo.bandwith * 1024 / 8;
-            LogColor($"[视频] [{selectedVideo.dfn}] [{selectedVideo.res}] [{selectedVideo.codecs}] [{selectedVideo.fps}] [{selectedVideo.bandwith} kbps] [{FormatFileSize(size)}]".Replace("[] ", ""), false);
+            LogColor($"[视频] [{selectedVideo.dfn}] [{selectedVideo.res}] [{selectedVideo.codecs}] [{selectedVideo.fps}] [码率: {selectedVideo.bandwith} kbps] [{FormatFileSize(size)}]".Replace("[] ", ""), false);
         }
         if (selectedAudio != null)
         {
             int pDur = pageDur == 0 ? selectedAudio.dur : pageDur;
-            LogColor($"[音频] [{selectedAudio.codecs}] [{selectedAudio.bandwith} kbps] [{FormatFileSize(pDur * selectedAudio.bandwith * 1024 / 8)}]", false);
+            LogColor($"[音频] [{selectedAudio.codecs}] [码率: {selectedAudio.bandwith} kbps] [{FormatFileSize(pDur * selectedAudio.bandwith * 1024 / 8)}]", false);
         }
     }
 

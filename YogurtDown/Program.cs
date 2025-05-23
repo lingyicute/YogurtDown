@@ -89,7 +89,7 @@ partial class Program
             { serverUrlOpt };
         runAsServerCommand.SetHandler(StartServer, serverUrlOpt);
         rootCommand.AddCommand(runAsServerCommand);
-        rootCommand.Description = "YogurtDown 梨优析 / 最好用的 BiliBili 视频电影下载器";
+        rootCommand.Description = "YogurtDown 梨优析 / 最好用的 BiliBili 视频 & 电影下载器";
         rootCommand.TreatUnmatchedTokensAsErrors = true;
 
         //WEB登录
@@ -156,7 +156,12 @@ partial class Program
         Console.BackgroundColor = ConsoleColor.DarkBlue;
         Console.ForegroundColor = ConsoleColor.White;
         var ver = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version!;
-        Console.Write($"YogurtDown 梨优析 / 最好用的 BiliBili 视频电影下载器 v{ver.Major}.{ver.Minor}.{ver.Build}\r\n");
+        Console.Write($"YogurtDown 梨优析 / 最好用的 BiliBili 视频 & 电影下载器 v{ver.Major}.{ver.Minor}.{ver.Build}\r\n");
+        Console.ResetColor();
+        Console.WriteLine();
+        Console.BackgroundColor = ConsoleColor.DarkBlue;
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.Write($"By @lingyicute\r\n");
         Console.ResetColor();
         Console.WriteLine();
 
@@ -725,7 +730,7 @@ partial class Program
                 int index = 0;
                 foreach (var v in parsedResult.VideoTracks)
                 {
-                    LogColor($"{index++}. [{v.dfn}] [{v.res}] [{v.codecs}] [{v.fps}] [{v.size / 1024 / v.dur * 8:00} kbps] [{FormatFileSize(v.size)}]".Replace("[] ", ""), false);
+                    LogColor($"{index++}. [{v.dfn}] [{v.res}] [{v.codecs}] [{v.fps}] [码率: {v.size / 1024 / v.dur * 8:00} kbps] [{FormatFileSize(v.size)}]".Replace("[] ", ""), false);
                     if (myOption.OnlyShowInfo)
                     {
                         clips.ForEach(Console.WriteLine);
