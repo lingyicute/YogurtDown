@@ -43,7 +43,7 @@ internal static class YogurtDownLoginUtil
             Log("  ");
             Log("生成二维码成功！请把刚刚生成的 qrcode.png 发给梨，让她完成鉴权相关的技术处理。");
             Log("  ");
-            Log("或者，如果暂时不想麻烦梨，你也可以扫描屏幕上的二维码用自己的账号登录 YogurtDown。但需要注意的是，此时 YogurtDown 将只能下载你的账号有权播放的内容 / 清晰度。");
+            Log("或者，如果暂时不想麻烦梨，你也可以扫描屏幕上的二维码用自己的 BiliBili 账号登录 YogurtDown。但需要注意的是，此时的 YogurtDown 将只能下载你的账号有权播放的内容 / 清晰度。");
 
             while (true)
             {

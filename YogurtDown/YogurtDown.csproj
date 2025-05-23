@@ -5,9 +5,8 @@
     <TargetFramework>net9.0</TargetFramework>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Version>1.8.7</Version>
-    <Description>YogurtDown 梨优析 / 最好用的 BiliBili 视频 & 电影下载器</Description>
+    <Description>YogurtDown 梨优析 / 最好用的 BiliBili 视频 &amp; 电影下载器</Description>
     <PackageProjectUrl>https://github.com/lingyicute/YogurtDown</PackageProjectUrl>
-    <StartupObject></StartupObject>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>YogurtDown</ToolCommandName>
     <PackageOutputPath>./nupkg</PackageOutputPath>

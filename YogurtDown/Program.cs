@@ -54,7 +54,7 @@ partial class Program
 
     private static void Console_CancelKeyPress(object? sender, ConsoleCancelEventArgs e)
     {
-        LogWarn("Force Exit...");
+        LogWarn("收到中断指令，YogurtDown 已被强行终止。");
         try
         {
             Console.ResetColor();
@@ -805,8 +805,8 @@ partial class Program
         {
             if (++retryCount > 2) throw;
             LogError(ex.Message);
-            LogWarn("下载出现异常, 3秒后将进行自动重试...");
-            await Task.Delay(3000);
+            LogWarn("YogurtDown 遇到问题，即将自动重试...");
+            await Task.Delay(1400);
             goto downloadPage;
         }
     }
